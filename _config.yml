@@ -43,12 +43,6 @@ repo_trophies:
 # Take a look to https://github.com/jekyll/jekyll-feed for more customization
 
 # -----------------------------------------------------------------------------
-# jupyter notebook path support for Vercel deployment
-# -----------------------------------------------------------------------------
-jupyter_notebook:
-  jupyter_path: /vercel/.python/bin/jupyter # path to jupyter executable
-
-# -----------------------------------------------------------------------------
 # Layout
 # -----------------------------------------------------------------------------
 
@@ -203,6 +197,7 @@ exclude:
   - _news/exclude/
   - _projects/exclude/
   - _books/exclude/
+  - assets/jupyter/blog.ipynb
 keep_files:
   - CNAME
   - .nojekyll
