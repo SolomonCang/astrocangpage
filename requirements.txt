@@ -1,1 +1,4 @@
 nbconvert
+notebook>=7
+jupyterlab>=4
+jupyter>=1
