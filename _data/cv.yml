@@ -14,14 +14,13 @@
   type: time_table
   contents:
     - title: Ph.D. in Astrophysics, Planetary Sciences, Space Science
-      institution: Université de Toulouse / Institut de Recherche en Astrophysique et Planétologie (IRAP), Toulouse, France
+      institution: Université de Toulouse / Institut de Recherche en Astrophysique et Planétologie (IRAP)
+      location: Toulouse, France
       year: 2017 - 2021
-      description:
-        - Focus areas: astrophysics, planetary sciences, and space science.
-        - Thesis: Modélisation de l'Activité des Étoiles Froides à partir de données Photométriques et Spectropolarimétriques.
-        - Score: 10/10.
+      description: Thesis - <a href="https://theses.fr/2021TOU30292"> Modélisation de l'Activité des Étoiles Froides à partir de données Photométriques et Spectropolarimétriques. </a>
     - title: Bachelor & Master in Astronomy & Astrophysics
-      institution: Beijing Normal University, Beijing, China
+      institution: Beijing Normal University
+      location: Beijing, China
       year: 2010 - 2017
       description:
         - Combined bachelor’s and master’s curriculum covering fundamental theory and observational practice in astronomy and astrophysics.
@@ -31,34 +30,30 @@
   type: time_table
   contents:
     - title: Assistant Researcher of Astrophysics
-      institution: Beijing Planetarium, Beijing, China
+      institution: Beijing Planetarium
+      location: Beijing, China
       year: 2025.09 - Present
       description:
         - Lead observational and data-analysis campaigns in stellar physics, exoplanets, and magnetic field studies.
         - Apply spectropolarimetric techniques to investigate stellar activity and surface structures.
     - title: Postdoctoral Researcher of Astrophysics
-      institution: Beijing Normal University, Beijing, China
+      institution: Beijing Normal University
+      location: Beijing, China
       year: 2022.02 - 2025.09
 
 - title: Research Projects
   type: time_table
   contents:
-    - title: PI · 中国博士后科学基金 (2023M730297)
+    - title: <b>PI</b> · 中国博士后科学基金 (2023M730297)
       year: 2022 - 2024
-      description:
-        - Project overview: LAMOST fellowship.
-    - title: PI · 国家自然科学基金青年科学基金(C类) 12503035
+    - title: <b>PI</b> · 国家自然科学基金青年科学基金(C类) 12503035
       year: 2026 - 2028
-      description:
-        - Research focus: Magnetic field measurements and surface structure studies of M-dwarfs.
-    - title: Co-I · 国家自然科学基金面上项目 12273002
+      description: Magnetic field measurements and surface structure studies of M-dwarfs.
       year: 2023 - 2026
-      description:
-        - Research focus: Statistical study of nonlinear asteroseismic effects in gravity modes.
-    - title: Co-I · 国家重大科研仪器研制项目 12427804
+      description: Statistical study of nonlinear asteroseismic effects in gravity modes.
+    - title: <b>Co-I</b> · 国家重大科研仪器研制项目 12427804
       year: 2024 - 2029
-      description:
-        - Research focus: Development of a high-performance echelle spectropolarimeter for stellar observations.
+      description: Development of a high-performance echelle spectropolarimeter for stellar observations.
 
 - title: Teaching
   type: nested_list
@@ -68,7 +63,7 @@
         - Introduction to Astronomy
 
 - title: Supervision
-  type: nested_list
+  type: list_groups
   contents:
     - title: Masters
       items:
@@ -95,7 +90,3 @@
         - Spectropolarimetry
         - Stellar Activity
 
-- title: Other Interests
-  type: list
-  contents:
-    - Hobbies: Not specified.
