@@ -7,7 +7,7 @@ subtitle: Assistant researcher of <a href='http://bjp.org.cn'>Beijing Planetariu
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: true # crops the image to make it circular
   more_info: >
     <p>Room 504, Biulding B</p>
     <p>No.138 Xizhimenwai Street</p>
@@ -27,4 +27,8 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-Welcome to my site. I am an astronomer specializing in stellar astrophysics. My research focuses on stellar magnetic fields, magnetic activity, and exoplanets by using photometric and spectropolarimetric data. I am interested in how magnetism shapes stellar evolution, drives variability, and influences the environments and habitability of planetary systems.
+Welcome to my site!
+
+I am an astronomer specializing in stellar astrophysics. My research focuses on stellar magnetic fields, magnetic activity, and exoplanets by using photometric and spectropolarimetric data. I am interested in how magnetism shapes stellar evolution, drives variability, and influences the environments and habitability of planetary systems.
+
+My recent works 
