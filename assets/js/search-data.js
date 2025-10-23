@@ -32,7 +32,7 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "cv",
-          description: "Tianqi Cang is now an assistant researcher of astrophysics at the Beijing Planetarium. He got his undergraduate degree in astronomy from Beijing Normal University (BNU) and received his PhD from Université de Toulouse/Institut de Recherche en Astrophysique et Planétologie in 2021. After that, He was a post-doc at BNU as an LAMOST fellow. He is interested in the magnetic field-driven stellar activity and its impact on the habitability of exoplanets.",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
