@@ -197,7 +197,8 @@ exclude:
   - _news/exclude/
   - _projects/exclude/
   - _books/exclude/
-  - assets/jupyter/blog.ipynb
+  - assets/jupyter/blog.ipynb # ignore for now, remove after we found solution of jekyll-jupyter-notebook plugin
+  - _data/cv.yml # exclude cv data file, see if resume.json is sufficient
 keep_files:
   - CNAME
   - .nojekyll
