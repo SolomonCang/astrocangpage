@@ -72,15 +72,15 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "https://scixplorer.org";
               },
-            },{id: "post-a-distill-style-blog-post",
+            },{id: "post-a-table-of-observational-chromospheric-emission-lines",
         
-          title: "a distill-style blog post",
+          title: "A table of observational chromospheric emission lines",
         
-        description: "an example of a distill-style blog post and main elements",
+        description: "chromospheric line list for low-mass stars",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2021/distill/";
+            window.location.href = "/blog/2025/line/";
           
         },
       },{id: "news-m-dwarf-ad-leo-was-observed-with-fast-the-full-paper-can-be-found-here-the-related-news-can-be-see-here-in-chinese",
