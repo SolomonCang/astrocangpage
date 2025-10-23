@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
-description: A full publication list can be found in my A<a href='https://ui.adsabs.harvard.edu/public-libraries/80f2JNejToSM4KUur0iefw'>DS libarary</a>
+description: A full publication list can be found in my <a href='https://ui.adsabs.harvard.edu/public-libraries/80f2JNejToSM4KUur0iefw'>ADS libarary</a>
 nav: true
 nav_order: 2
 ---

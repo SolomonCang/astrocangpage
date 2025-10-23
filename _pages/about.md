@@ -29,6 +29,8 @@ latest_posts:
 
 Welcome to my site!
 
-I am an astronomer specializing in stellar astrophysics. My research focuses on stellar magnetic fields, magnetic activity, and exoplanets by using photometric and spectropolarimetric data. I am interested in how magnetism shapes stellar evolution, drives variability, and influences the environments and habitability of planetary systems.
+I am an astronomer specializing in stellar astrophysics. My research focuses on stellar magnetism and magnetic activity, using both photometric (TESS, Kepler...) and spectropolarimetric observations (ESPaDOnS, Narval, HARPSpol...). I’m interested in how magnetic fields shape stellar evolution, drive variability, and affect the environments and potential habitability of planetary systems.
 
-My recent works 
+Recently, my work has concentrated on magnetic fields in stellar upper atmospheres. I study the energy budget of magnetic fields during episodes of extreme stellar activity—such as flares—and the subsequent impacts on exoplanet atmospheres and habitability.
+
+If you’re interested in collaborating—or just want to chat about something fun—feel free to get in touch!
