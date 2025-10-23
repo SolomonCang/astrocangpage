@@ -3,95 +3,99 @@
   contents:
     - name: Full Name
       value: Tianqi Cang
-    - name: Date of Birth
-      value: 14th May 1992
+    - name: Current Position
+      value: Assistant Researcher, Beijing Planetarium
     - name: E-mail
       value: astrocang@gmail.com
+    - name: Website
+      value: https://astrocang.space
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: Université de Toulouse/Institut de Recherche en Astrophysique et Planétologie (IRAP), Toulouse, France
+    - title: Ph.D. in Astrophysics, Planetary Sciences, Space Science
+      institution: Université de Toulouse / Institut de Recherche en Astrophysique et Planétologie (IRAP), Toulouse, France
       year: 2017 - 2021
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - Focus areas: astrophysics, planetary sciences, and space science.
+        - Thesis: Modélisation de l'Activité des Étoiles Froides à partir de données Photométriques et Spectropolarimétriques.
+        - Score: 10/10.
+    - title: Bachelor & Master in Astronomy & Astrophysics
+      institution: Beijing Normal University, Beijing, China
+      year: 2010 - 2017
       description:
-        - Description 1.
-        - Description 2.
+        - Combined bachelor’s and master’s curriculum covering fundamental theory and observational practice in astronomy and astrophysics.
+        - Degree type: Bachelor & Master in Astronomy & Astrophysics.
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Assistant Researcher of Astrophysics
+      institution: Beijing Planetarium, Beijing, China
+      year: 2025.09 - Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
+        - Lead observational and data-analysis campaigns in stellar physics, exoplanets, and magnetic field studies.
+        - Apply spectropolarimetric techniques to investigate stellar activity and surface structures.
+    - title: Postdoctoral Researcher of Astrophysics
+      institution: Beijing Normal University, Beijing, China
+      year: 2022.02 - 2025.09
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
+- title: Research Projects
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: PI · 中国博士后科学基金 (2023M730297)
+      year: 2022 - 2024
+      description:
+        - Project overview: LAMOST fellowship.
+    - title: PI · 国家自然科学基金青年科学基金(C类) 12503035
+      year: 2026 - 2028
+      description:
+        - Research focus: Magnetic field measurements and surface structure studies of M-dwarfs.
+    - title: Co-I · 国家自然科学基金面上项目 12273002
+      year: 2023 - 2026
+      description:
+        - Research focus: Statistical study of nonlinear asteroseismic effects in gravity modes.
+    - title: Co-I · 国家重大科研仪器研制项目 12427804
+      year: 2024 - 2029
+      description:
+        - Research focus: Development of a high-performance echelle spectropolarimeter for stellar observations.
 
-- title: Honors and Awards
-  type: time_table
+- title: Teaching
+  type: nested_list
   contents:
-    - year: 1921
+    - title: Astronomy
       items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
+        - Introduction to Astronomy
+
+- title: Supervision
+  type: nested_list
+  contents:
+    - title: Masters
       items:
-        - Max Planck Medal
+        - Xueying Hu (co-supervised with Prof. Jianning Fu)
+    - title: PhDs
+      items:
+        - Yinpeng Wang (co-supervised with Prof. Jianning Fu)
+
+- title: Languages
+  type: list
+  contents:
+    - Chinese — Native speaker
+    - English — B2
+    - French — A2
 
 - title: Academic Interests
   type: nested_list
   contents:
-    - title: Topic 1.
+    - title: Astrophysics
       items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
+        - Stellar Physics
+        - Exoplanets
+        - Magnetic Fields
+        - Spectropolarimetry
+        - Stellar Activity
 
 - title: Other Interests
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - Hobbies: Not specified.
