@@ -83,8 +83,8 @@ ninja.data = [{
             window.location.href = "/blog/2025/line/";
           
         },
-      },{id: "news-m-dwarf-ad-leo-was-observed-with-fast-the-full-paper-can-be-found-here-the-related-news-can-be-see-here-in-chinese",
-          title: 'M-dwarf AD Leo was observed with FAST. The full paper can be found...',
+      },{id: "news-using-radio-observations-of-fast-we-detected-a-new-millisecond-scale-radio-burst-on-the-m-type-star-ad-leo-the-signal-originates-from-small-scale-magnetic-fields-in-the-stellar-spotted-regions-the-relevant-work-was-recently-published-in-science-advances-a-related-news-can-be-see-here-in-chinese",
+          title: 'Using radio observations of FAST, we detected a new millisecond-scale radio burst on...',
           description: "",
           section: "News",},{
         id: 'social-email',
