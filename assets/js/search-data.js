@@ -25,7 +25,7 @@ ninja.data = [{
           },
         },{id: "nav-repositories",
           title: "repositories",
-          description: "Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.",
+          description: "Some featured Github repositories used in my work",
           section: "Navigation",
           handler: () => {
             window.location.href = "/repositories/";
@@ -71,6 +71,13 @@ ninja.data = [{
               section: "Dropdown",
               handler: () => {
                 window.location.href = "https://scixplorer.org";
+              },
+            },{id: "dropdown-simbad",
+              title: "Simbad",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "https://simbad.cds.unistra.fr/simbad/";
               },
             },{id: "post-a-table-of-observational-chromospheric-emission-lines",
         
