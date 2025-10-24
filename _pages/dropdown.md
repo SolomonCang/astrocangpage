@@ -18,5 +18,9 @@ children:
     permalink: https://archive.eso.org/scienceportal/home
   - title: divider
   - title: SciX
-    permalink: https://scixplorer.org
+    permalink: https://scixplorer.org  
+  - title: divider
+  - title: Simbad
+    permalink: https://simbad.cds.unistra.fr/simbad/
+    
 ---
