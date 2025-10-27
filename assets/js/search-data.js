@@ -7,42 +7,42 @@ ninja.data = [{
     title: "about",
     section: "Navigation",
     handler: () => {
-      window.location.href = "/";
+      window.location.href = "/miniTools/";
     },
   },{id: "nav-blog",
           title: "blog",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/blog/";
+            window.location.href = "/miniTools/blog/";
           },
         },{id: "nav-cv",
           title: "cv",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/cv/";
+            window.location.href = "/miniTools/cv/";
           },
         },{id: "nav-publications",
           title: "publications",
           description: "A full publication list can be found in my ADS libarary",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/publications/";
+            window.location.href = "/miniTools/publications/";
           },
         },{id: "nav-repositories",
           title: "repositories",
           description: "Some featured Github repositories used in my work",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/repositories/";
+            window.location.href = "/miniTools/repositories/";
           },
         },{id: "dropdown-spectrum-viewer",
               title: "Spectrum Viewer",
               description: "",
               section: "Dropdown",
               handler: () => {
-                window.location.href = "/miniTools/spectrum-viewer/";
+                window.location.href = "/miniTools/miniTools/spectrum-viewer/";
               },
             },{id: "dropdown-irap",
               title: "IRAP",
@@ -94,7 +94,7 @@ ninja.data = [{
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/line/";
+            window.location.href = "/miniTools/blog/2025/line/";
           
         },
       },{id: "news-using-radio-observations-of-fast-we-detected-a-new-millisecond-scale-radio-burst-on-the-m-type-star-ad-leo-the-signal-originates-from-small-scale-magnetic-fields-in-the-stellar-spotted-regions-the-relevant-work-was-recently-published-in-science-advances-a-related-news-can-be-see-here-in-chinese",
