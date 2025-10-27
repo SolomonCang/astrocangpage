@@ -17,12 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!uploadInput || !chartContainer) return;
     // Constants and element definitions
     const LINES = {
-        "H\u03b1 6563": 656.28,      // Hα
-        "H\u03b2 4861": 486.13,       // Hβ
-        "H\u03b3 4340": 434.05,       // Hγ
-        "H\u03b4 4102": 410.17,       // Hδ
-        "H\u03b5 3970": 397.01,       // Hε
-        "H\u03b6 3889": 388.9064,     // Hζ
+        "H-alpha 6563": 656.28,
+        "H-beta 4861": 486.13,
+        "H-gamma 4340": 434.05,
+        "H-delta 4102": 410.17,
+        "H-epsilon 3970": 397.01,
+        "H-zeta 3889": 388.9064,
         "He I D3 5876": 587.56, "He I 4472": 447.15, "He I 4026": 402.62,
         "He I 3889": 388.86, "He II 4686": 468.57038,
         "Na II D1 5890": 588.995, "Na II D2 5896": 589.592,
