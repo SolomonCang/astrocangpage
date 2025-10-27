@@ -1,5 +1,5 @@
 // assets/js/miniTools/spectrum-viewer.js
-
+/* terser:disable */
 document.addEventListener('DOMContentLoaded', () => {
     // =================================================================
     // 0. Element retrieval and constants (ported from Python)
@@ -141,8 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         const typeMap = {
-            "spec_pol": "Spec (pol)", "spec_i": "Spec (I)",
-            "lsd_pol": "LSD (pol)", "lsd_i": "LSD (I)",
+            "spec_pol": "Spec (pol)", 
+            "spec_i": "Spec (I)",
+            "lsd_pol": "LSD (pol)", 
+            "lsd_i": "LSD (I)",
         };
         resolvedTypeEl.textContent = typeMap[parsedData.resolvedType] || parsedData.resolvedType;
 
@@ -440,3 +442,4 @@ document.addEventListener('DOMContentLoaded', () => {
         Plotly.newPlot(chartContainer, traces, layout, { responsive: true });
     }
 });
+/* terser:enable */
