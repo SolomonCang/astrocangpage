@@ -1,0 +1,90 @@
+/* assets/css/spectrum-viewer.css */
+
+.spectrum-viewer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.control-section {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.upload-label {
+    cursor: pointer;
+}
+
+#upload-box {
+    border: 2px dashed #ccc;
+    padding: 40px 20px;
+    text-align: center;
+    color: #666;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+#upload-box a {
+    color: var(--global-theme-color);
+    text-decoration: underline;
+}
+
+/* 当文件被拖拽到上传框上方的效果 */
+#upload-box.dragover {
+    background-color: #eef5ff;
+    border-color: #6b9cff;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.control-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.control-item label {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.control-item input[type="number"],
+.control-item input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#file-type-radios label,
+#col-checklist label {
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+#resolved-type {
+    color: var(--global-theme-color);
+}
+
+#spectrum-figure {
+    width: 100%;
+    min-height: 500px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+
+.footer-note {
+    text-align: center;
+    font-size: 0.8em;
+    color: #888;
+}
+
+/* 修正：允许谱线按钮显示小写希腊字母 */
+#line-buttons-container button {
+    text-transform: none;
+}
