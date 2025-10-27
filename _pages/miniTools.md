@@ -7,5 +7,4 @@ dropdown: true
 children:
   - title: Spectrum Viewer
     permalink: /miniTools/spectrum-viewer/
-  - title: divider
 ---

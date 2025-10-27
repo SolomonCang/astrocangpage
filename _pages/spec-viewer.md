@@ -12,8 +12,8 @@ nav_order: 7
 <script src="https://cdn.plot.ly/plotly-3.1.0.min.js" charset="utf-8"></script>
 
 <!-- Include custom CSS and JS files -->
-<link rel="stylesheet" href="{{ '/assets/css/spectrum-viewer.css' | relative_url }}">
-<script src="{{ '/assets/js/spectrum-viewer.js' | relative_url }}" defer></script>
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/spectrum-viewer.css">
+<script src="{{ site.baseurl }}/assets/js/spectrum-viewer.js" defer></script>
 
 <!-- Page HTML structure -->
 <div class="spectrum-viewer-container">
