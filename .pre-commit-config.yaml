@@ -2,43 +2,9 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0 # Use a more recent version
+    rev: v4.3.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-added-large-files
-        args: [--maxkb=20000] # Increased limit just in case
-  - repo: https://github.com/jumanjihouse/pre-commit-hook-yamlfmt
-    rev: 0.2.3
-    hooks:
-      - id: yamlfmt
-  - repo: local
-    hooks:
-      - id: jekyll-compress-html
-        name: jekyll-compress-html
-        entry: jekyll-compress-html
-        language: ruby
-        types: [html]
-        require_serial: true
-      - id: compress-js
-        name: compress-js
-        # This is the corrected entry, without the size limit
-        entry: >-
-          find _site -name "*.js" -print0 |
-          xargs -0 -n1 -P4 --
-          uglifyjs --compress --mangle --output
-        language: node
-        types: [file]
-        pass_filenames: false
-        require_serial: true
-      - id: compress-css
-        name: compress-css
-        entry: >-
-          find _site -name "*.css" -print0 |
-          xargs -0 -n1 -P4 --
-          csso --input
-        language: node
-        types: [file]
-        pass_filenames: false
-        require_serial: true
