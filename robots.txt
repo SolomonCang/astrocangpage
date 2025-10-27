@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://astrocan.space/sitemap.xml
+Sitemap: https://www.astrocang.space/sitemap.xml
