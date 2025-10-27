@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
+        },{id: "nav-cv",
+          title: "cv",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
+          },
         },{id: "nav-publications",
           title: "publications",
           description: "A full publication list can be found in my ADS libarary",
@@ -30,14 +37,14 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/repositories/";
           },
-        },{id: "nav-cv",
-          title: "cv",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/cv/";
-          },
-        },{id: "dropdown-irap",
+        },{id: "dropdown-spectrum-viewer",
+              title: "Spectrum Viewer",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/miniTools/spectrum-viewer/";
+              },
+            },{id: "dropdown-irap",
               title: "IRAP",
               description: "",
               section: "Dropdown",
