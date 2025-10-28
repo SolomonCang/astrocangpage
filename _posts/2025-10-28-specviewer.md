@@ -8,11 +8,11 @@ categories: astro-posts
 featured: false
 ---
 
-The website now includes a submenu named 'miniTools', in which I convert some useful tiny tools to the JaveScript language and can be fully used on the website. Now that there is only one tool  <a href="/miniTools/spectrum-viewer/">'Spectrum Viewer'</a>, which can used to show the Stokes <i>I</i>, <i>V</i>, and  <i>Null</i> profiles of a spectrum in the format of [Polarbase](https://www.polarbase.ovgso.fr). Spectrum Viewer can autometicly detect the data type including: 
+The website now features a submenu called “miniTools,” where I’ve ported several handy utilities to JavaScript so they can run entirely in the browser. Currently, it includes a single tool: <a href="/miniTools/spectrum-viewer/">Spectrum Viewer</a>. This tool displays Stokes <i>I</i>, <i>V</i>, and <i>Null</i> profiles for spectra in the Polarbase format. Spectrum Viewer automatically detects the data type, including:
 
- - Spectrum w/ Stokes <i>V</i> (pol)
- - Spectrum w/ only Stokes <i>I</i>  (I)
- - LSD profile w/ Stokes <i>V</i> (pol)
- - LSD profile w/ only Stokes <i>I</i>  (I)
- 
- You can also selected a method to read the data. For data of spectrum, the tool will include a list of button for chromospheric lines, you can click it and the plot will jump to the line with given velocity range.
+- Spectrum with Stokes <i>V</i> (pol)
+- Spectrum with Stokes <i>I</i> only (I)
+- LSD profile with Stokes <i>V</i> (pol)
+- LSD profile with Stokes <i>I</i> only (I)
+
+You can also choose a method for reading the data. For spectral data, the tool provides a set of buttons for common chromospheric lines; clicking a button will navigate the plot to that line with the specified velocity range.

@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "H-delta 4102": 410.17,
         "H-epsilon 3970": 397.01,
         "H-zeta 3889": 388.9064,
+        "He I 10830": 1083.0,
         "He I D3 5876": 587.56, "He I 4472": 447.15, "He I 4026": 402.62,
         "He I 3889": 388.86, "He II 4686": 468.57038,
         "Na II D1 5890": 588.995, "Na II D2 5896": 589.592,
@@ -146,8 +147,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const typeMap = {
             "spec_pol": "Spec (pol)", 
             "spec_i": "Spec (I)",
+            "spec_i_simple": "Spec (I, simple)",
             "lsd_pol": "LSD (pol)", 
             "lsd_i": "LSD (I)",
+            "lsd_i_simple": "LSD (I, simple)",
         };
         resolvedTypeEl.textContent = typeMap[parsedData.resolvedType] || parsedData.resolvedType;
 
@@ -192,21 +195,31 @@ document.addEventListener('DOMContentLoaded', () => {
         const nonCommentLines = lines.filter(ln => !ln.trim().startsWith('*'));
         
         let startIdx = -1;
+        let skipRows = 0;
+        
         for (let i = 0; i < nonCommentLines.length; i++) {
             const parts = nonCommentLines[i].trim().split(/\s+/);
             const numCount = parts.reduce((count, p) => count + (isFinite(p) && p !== '' ? 1 : 0), 0);
-            if (numCount >= 3) {
+            if (numCount >= 2) {
                 startIdx = i;
                 break;
             }
         }
 
-        if (startIdx === -1) { // Fallback if not found
-            startIdx = nonCommentLines.findIndex(ln => ln.trim().split(/\s+/).length >=2);
-            if(startIdx === -1) throw new Error("Could not find valid data lines in the file.");
+        if (startIdx === -1) {
+            throw new Error("Could not find valid data lines in the file.");
         }
 
-        const dataLines = nonCommentLines.slice(startIdx);
+        // Check if this is a 2-column file (simple format)
+        const firstDataLine = nonCommentLines[startIdx].trim().split(/\s+/).map(parseFloat);
+        const is2Column = firstDataLine.length === 2 && firstDataLine.every(v => isFinite(v));
+        
+        // For 2-column files, skip the first 2 data rows
+        if (is2Column) {
+            skipRows = 2;
+        }
+
+        const dataLines = nonCommentLines.slice(startIdx + skipRows);
         const rawData = dataLines
             .map(line => line.trim().split(/\s+/).map(parseFloat))
             .filter(row => row.length > 0 && !row.some(isNaN));
@@ -261,8 +274,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const columnMap = {
             spec_pol: { ncol: 6, names: ["Wav", "Int", "Pol", "Null1", "Null2", "sigma_int"], xCol: "Wav" },
             spec_i:   { ncol: 3, names: ["Wav", "Int", "sigma_int"], xCol: "Wav" },
+            spec_i_simple: { ncol: 2, names: ["Wav", "Int"], xCol: "Wav" },
             lsd_pol:  { ncol: 7, names: ["RV", "Int", "sigma_int", "Pol", "sigma_pol", "Null1", "sigma_null1"], xCol: "RV" },
             lsd_i:    { ncol: 3, names: ["RV", "Int", "sigma_int"], xCol: "RV" },
+            lsd_i_simple: { ncol: 2, names: ["RV", "Int"], xCol: "RV" },
         };
         const spec = columnMap[type];
         if (!spec || spec.ncol !== ncol) return null;
@@ -290,6 +305,19 @@ document.addEventListener('DOMContentLoaded', () => {
             if (is_wav && !is_rv) return "spec_i";
             if (is_rv && !is_wav) return "lsd_i";
         }
+        
+        if (ncol === 2) {
+            const x = rawData.map(row => row[0]);
+            const xmin = Math.min(...x);
+            const xmax = Math.max(...x);
+
+            const is_wav = (xmin >= 200) && (xmax <= 5000);
+            const is_rv = (xmin < 0) || (Math.abs(xmin) <= 10000 && Math.abs(xmax) <= 10000 && xmax < 200);
+
+            if (is_wav && !is_rv) return "spec_i_simple";
+            if (is_rv && !is_wav) return "lsd_i_simple";
+        }
+        
         return null; // Unable to determine
     }
 
@@ -463,33 +491,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        addTraces(panelCols.N, 'y3'); // Top panel
-        addTraces(panelCols.V, 'y2'); // Middle panel
-        addTraces(panelCols.I, 'y');  // Bottom panel
-
-        const xlabel = resolvedType.startsWith('spec') ? "Wavelength (nm)" : "Radial Velocity (km/s)";
-        const layout = {
-            grid: { rows: 3, columns: 1, pattern: 'independent' },
-            title: 'Spectral Data',
-            xaxis: { title: xlabel, anchor: 'y' },
-            yaxis:  { domain: [0, 0.6], title: 'I' }, // Bottom
-            yaxis2: { domain: [0.62, 0.8], title: 'V' }, // Middle
-            yaxis3: { domain: [0.82, 1.0], title: 'N' }, // Top
-            hovermode: 'x unified',
-            legend: { orientation: 'h', y: -0.2, x: 0.5, xanchor: 'center' },
-            margin: { l: 60, r: 30, b: 80, t: 50 },
-            height: 600
-        };
-
-        // Apply zoom range if requested
-        if (xZoomRange) {
-            layout.xaxis.range = xZoomRange;
-
-            // Auto-scale Y axes
-            const adaptY = (cols, yaxisKey) => {
+        const isSimpleFormat = resolvedType.includes('_simple');
+        
+        if (isSimpleFormat) {
+            // For simple format, only plot intensity
+            addTraces(panelCols.I, 'y');
+            
+            const xlabel = resolvedType.startsWith('spec') ? "Wavelength (nm)" : "Radial Velocity (km/s)";
+            const layout = {
+                title: 'Spectral Data',
+                xaxis: { title: xlabel },
+                yaxis: { title: 'I' },
+                hovermode: 'x unified',
+                legend: { orientation: 'h', y: -0.15, x: 0.5, xanchor: 'center' },
+                margin: { l: 60, r: 30, b: 80, t: 50 },
+                height: 400
+            };
+            
+            if (xZoomRange) {
+                layout.xaxis.range = xZoomRange;
+                
                 let ymin = Infinity, ymax = -Infinity;
                 let hasDataInRange = false;
-                cols.forEach(col => {
+                panelCols.I.forEach(col => {
                     if (!data[col]) return;
                     for (let i = 0; i < data[xCol].length; i++) {
                         if (data[xCol][i] >= xZoomRange[0] && data[xCol][i] <= xZoomRange[1]) {
@@ -501,15 +525,61 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
                 if (hasDataInRange) {
                     const pad = (ymax - ymin) * 0.05 || Math.abs(ymin) * 0.05 || 0.1;
-                    layout[yaxisKey].range = [ymin - pad, ymax + pad];
+                    layout.yaxis.range = [ymin - pad, ymax + pad];
                 }
-            };
-            adaptY(panelCols.I, 'yaxis');
-            adaptY(panelCols.V, 'yaxis2');
-            adaptY(panelCols.N, 'yaxis3');
-        }
+            }
+            
+            Plotly.newPlot(chartContainer, traces, layout, { responsive: true });
+        } else {
+            // Original 3-panel layout for full format
+            addTraces(panelCols.N, 'y3'); // Top panel
+            addTraces(panelCols.V, 'y2'); // Middle panel
+            addTraces(panelCols.I, 'y');  // Bottom panel
 
-        Plotly.newPlot(chartContainer, traces, layout, { responsive: true });
+            const xlabel = resolvedType.startsWith('spec') ? "Wavelength (nm)" : "Radial Velocity (km/s)";
+            const layout = {
+                grid: { rows: 3, columns: 1, pattern: 'independent' },
+                title: 'Spectral Data',
+                xaxis: { title: xlabel, anchor: 'y' },
+                yaxis:  { domain: [0, 0.6], title: 'I' }, // Bottom
+                yaxis2: { domain: [0.62, 0.8], title: 'V' }, // Middle
+                yaxis3: { domain: [0.82, 1.0], title: 'N' }, // Top
+                hovermode: 'x unified',
+                legend: { orientation: 'h', y: -0.2, x: 0.5, xanchor: 'center' },
+                margin: { l: 60, r: 30, b: 80, t: 50 },
+                height: 600
+            };
+
+            // Apply zoom range if requested
+            if (xZoomRange) {
+                layout.xaxis.range = xZoomRange;
+
+                // Auto-scale Y axes
+                const adaptY = (cols, yaxisKey) => {
+                    let ymin = Infinity, ymax = -Infinity;
+                    let hasDataInRange = false;
+                    cols.forEach(col => {
+                        if (!data[col]) return;
+                        for (let i = 0; i < data[xCol].length; i++) {
+                            if (data[xCol][i] >= xZoomRange[0] && data[xCol][i] <= xZoomRange[1]) {
+                                ymin = Math.min(ymin, data[col][i]);
+                                ymax = Math.max(ymax, data[col][i]);
+                                hasDataInRange = true;
+                            }
+                        }
+                    });
+                    if (hasDataInRange) {
+                        const pad = (ymax - ymin) * 0.05 || Math.abs(ymin) * 0.05 || 0.1;
+                        layout[yaxisKey].range = [ymin - pad, ymax + pad];
+                    }
+                };
+                adaptY(panelCols.I, 'yaxis');
+                adaptY(panelCols.V, 'yaxis2');
+                adaptY(panelCols.N, 'yaxis3');
+            }
+
+            Plotly.newPlot(chartContainer, traces, layout, { responsive: true });
+        }
     }
 });
 /* terser:enable */
