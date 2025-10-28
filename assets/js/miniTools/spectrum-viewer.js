@@ -57,7 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
         el.addEventListener('change', processAndDraw);
     });
     colChecklist.addEventListener('change', () => drawChart());
-    
+
+    // Add jump button next to wl0 input
+    addJumpButton();
+
     // Initialization
     generateLineButtons();
     drawChart(); // Draw an empty initial chart
@@ -325,6 +328,73 @@ document.addEventListener('DOMContentLoaded', () => {
         const xRange = [wl_c - dwl, wl_c + dwl];
         
         drawChart(xRange); // Redraw with new range
+    }
+
+    /**
+     * Add jump button next to wl0 input
+     */
+    function addJumpButton() {
+        if (!wl0Input) return;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = 'wl0-jump-btn';
+        btn.textContent = 'jump';
+        btn.className = 'btn btn-sm btn-primary';
+        btn.style.marginLeft = '8px';
+        btn.addEventListener('click', handleJump);
+        wl0Input.insertAdjacentElement('afterend', btn);
+    }
+
+    /**
+     * Handle jump based on wl0 and velocity range
+     */
+    function handleJump() {
+        if (!parsedData) {
+            alert('Please load data first.');
+            return;
+        }
+        const wl0 = parseFloat(wl0Input.value);
+        const vRange = parseFloat(velRangeInput.value);
+
+        if (!isFinite(wl0)) {
+            alert('Invalid wl0.');
+            return;
+        }
+        if (!isFinite(vRange) || vRange <= 0) {
+            alert('Invalid velocity range.');
+            return;
+        }
+
+        const dwl = v2dwl(vRange, wl0);
+        const xZoomRange = [wl0 - dwl, wl0 + dwl];
+
+        const { data, xCol, resolvedType } = parsedData;
+
+        if (resolvedType && resolvedType.startsWith('lsd')) {
+            const centerV = 0;
+            const xZoomRV = [centerV - vRange, centerV + vRange];
+            const xData = data[xCol] || [];
+            const xmin = Math.min(...xData);
+            const xmax = Math.max(...xData);
+            if (!(xZoomRV[1] >= xmin && xZoomRV[0] <= xmax)) {
+                alert('Requested range is out of data bounds.');
+            }
+            drawChart(xZoomRV);
+            return;
+        }
+
+        const xData = data[xCol] || [];
+        if (!xData.length) {
+            alert('No x data found.');
+            return;
+        }
+        const xmin = Math.min(...xData);
+        const xmax = Math.max(...xData);
+
+        if (!(xZoomRange[1] >= xmin && xZoomRange[0] <= xmax)) {
+            alert('Requested range is out of data bounds.');
+        }
+        drawChart(xZoomRange);
     }
 
     /**

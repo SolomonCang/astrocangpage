@@ -14,7 +14,7 @@ nav_order: 7
 <!-- Include custom CSS and JS files -->
 <link rel="stylesheet" href="{{ '/assets/css/spectrum-viewer.css' | relative_url }}">
 <script src="{{ '/assets/js/miniTools/spectrum-viewer.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/miniTools/test.js' | relative_url }}" defer></script>
+
 <!-- Page HTML structure -->
 <div class="spectrum-viewer-container">
     <h2>Upload Spectrum Data from the <a href='https://www.polarbase.ovgso.fr'>Polarbase</a></h2>
