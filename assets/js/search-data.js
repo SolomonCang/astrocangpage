@@ -86,7 +86,18 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "https://simbad.cds.unistra.fr/simbad/";
               },
-            },{id: "post-a-table-of-observational-chromospheric-emission-lines",
+            },{id: "post-a-mini-tool-for-viewing-spectra-from-polarbase",
+        
+          title: "a mini tool for viewing spectra from Polarbase",
+        
+        description: "Spectrum Viewer in miniTools",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/specviewer/";
+          
+        },
+      },{id: "post-a-table-of-observational-chromospheric-emission-lines",
         
           title: "A table of observational chromospheric emission lines",
         

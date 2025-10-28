@@ -1,1 +1,0 @@
-document.addEventListener("DOMContentLoaded",(function(){var e=document.getElementById("spectrumFile");e&&e.addEventListener("change",(function(e){var t=e.target.files[0];t&&alert("File selected: "+t.name)}))}));
