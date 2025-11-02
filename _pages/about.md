@@ -9,7 +9,7 @@ profile:
   image: prof_pic.jpg
   image_circular: true # crops the image to make it circular
   more_info: >
-    <p>Room 504, Biulding B</p>
+    <p>Room 504, Building B</p>
     <p>No.138 Xizhimenwai Street</p>
     <p>Beijing, PRC</p>
 
