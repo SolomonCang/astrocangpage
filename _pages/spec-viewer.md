@@ -17,7 +17,7 @@ nav_order: 7
 
 <!-- Page HTML structure -->
 <div class="spectrum-viewer-container">
-    <h2>Upload Spectrum Data from the <a href='https://www.polarbase.ovgso.fr'>Polarbase</a></h2>
+    <h2>Upload Spectrum Data from the <a href='https://www.polarbase.ovgso.fr'>Polarbase</a> or your own</h2>
 
     <!-- Upload area -->
     <div class="control-group">
