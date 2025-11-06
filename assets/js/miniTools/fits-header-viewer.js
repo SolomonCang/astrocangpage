@@ -1,7 +1,7 @@
 // assets/js/miniTools/fits-header-viewer.js
 /* terser:disable */
 document.addEventListener("DOMContentLoaded", () => {
-  // -------------------- 安全追加与工具函数 --------------------
+  // -------------------- Safe append utilities --------------------
   function safeAppend(parent, child) {
     if (!parent) return;
     if (child == null) return;
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const trh = createEl("tr");
 
     (columns || []).forEach((c, idx) => {
-      const th = createEl("th", { "data-idx": String(idx), title: "点击排序" }, c ?? "");
+      const th = createEl("th", { "data-idx": String(idx), title: "Click to sort" }, c ?? "");
       trh.appendChild(th);
     });
     thead.appendChild(trh);
@@ -98,8 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (opts.filterable) {
       const toolbar = createEl("div", { class: "toolbar" }, [
-        createEl("span", {}, "筛选："),
-        createEl("input", { type: "text", placeholder: "输入关键字（对所有列生效）" }),
+        createEl("span", {}, "Filter:"),
+        createEl("input", { type: "text", placeholder: "Enter keyword (applies to all columns)" }),
       ]);
       const input = toolbar.querySelector("input");
       const all = (rows || []).slice();
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return root;
   };
 
-  // -------------------- 元素引用 --------------------
+  // -------------------- DOM refs --------------------
   const uploader = document.getElementById("uploader");
   const fileInput = document.getElementById("fhv-file-input");
   const fileInfo = document.getElementById("fhv-file-info");
@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!uploader || !fileInput) return;
 
-  // -------------------- FITS 解析（精简 Header 版） --------------------
+  // -------------------- FITS parsing (header-only, simplified) --------------------
   function readText(dataview, offset, length) {
     const bytes = new Uint8Array(dataview.buffer, offset, length);
     let s = "";
@@ -145,8 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function parseHeaderCards(view, start) {
     const cards = [];
     let pos = start;
-    const block = 2880,
-      cardLen = 80;
+    const block = 2880;
+    const cardLen = 80;
     let ended = false;
     while (!ended) {
       if (pos + block > view.byteLength) break;
@@ -165,15 +165,15 @@ document.addEventListener("DOMContentLoaded", () => {
           cards.push({ keyword: key, value: "", comment: card.slice(8).trim() });
           continue;
         }
-        let value = "",
-          comment = "";
+        let value = "";
+        let comment = "";
         if (raw.startsWith("=")) {
           let v = raw.slice(1).trimStart();
-          let val = v,
-            com = "";
+          let val = v;
+          let com = "";
           if (v.includes("/")) {
-            let inStr = false,
-              idxSlash = -1;
+            let inStr = false;
+            let idxSlash = -1;
             for (let j = 0; j < v.length; j++) {
               const ch = v[j];
               if (ch === "'") inStr = !inStr;
@@ -234,8 +234,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function parseFits(arrayBuffer) {
     const view = new DataView(arrayBuffer);
     const hdus = [];
-    let offset = 0,
-      index = 0;
+    let offset = 0;
+    let index = 0;
     while (offset < view.byteLength) {
       const { cards, nextOffset } = parseHeaderCards(view, offset);
       if (!cards || cards.length === 0) break;
@@ -256,7 +256,16 @@ document.addEventListener("DOMContentLoaded", () => {
       const shape = naxisn.length ? "(" + naxisn.join(", ") + ")" : "None";
       const rows = (cards || []).map((c) => [c.keyword, String(c.value ?? ""), String(c.comment ?? "")]);
 
-      hdus.push({ index, name, type, ver, data_shape: shape, bitpix: bitpix || null, naxis: naxis || null, headerRows: rows });
+      hdus.push({
+        index,
+        name,
+        type,
+        ver,
+        data_shape: shape,
+        bitpix: bitpix || null,
+        naxis: naxis || null,
+        headerRows: rows,
+      });
       index += 1;
       offset = dataEnd;
       if (offset <= 0 || offset >= view.byteLength) break;
@@ -264,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return hdus;
   }
 
-  // -------------------- 应用状态与渲染 --------------------
+  // -------------------- App state and rendering --------------------
   const ALLOWED_EXTS = [".fits", ".fit", ".fts"];
 
   let state = { filename: null, hdus: [], selected: 0 };
@@ -294,7 +303,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hduSelect.appendChild(opt);
     });
     hduSelect.value = String(state.selected ?? 0);
-    hduCount.textContent = `HDU 数量：${state.hdus.length}`;
+    hduCount.textContent = `HDU count: ${state.hdus.length}`;
   }
 
   function renderSummary() {
@@ -306,20 +315,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const cols = ["index", "name", "type", "ver", "data_shape", "bitpix", "naxis"];
     const rows = state.hdus.map((h) => [h.index, h.name, h.type, h.ver, h.data_shape, h.bitpix, h.naxis]);
     summary.innerHTML = "";
-    safeAppend(summary, createEl("h4", {}, "HDU 概览"));
+    safeAppend(summary, createEl("h4", {}, "HDU Overview"));
     safeAppend(summary, toTable(cols, rows, { filterable: false }));
   }
 
   function renderHeader() {
     if (!headerDiv) return;
     if (!state.hdus.length) {
-      headerDiv.textContent = "尚未选择 HDU。";
+      headerDiv.textContent = "No HDU selected.";
       return;
     }
     const idx = state.selected ?? 0;
     const hdu = state.hdus.find((h) => h.index === Number(idx));
     if (!hdu) {
-      headerDiv.textContent = "HDU 索引超出范围。";
+      headerDiv.textContent = "HDU index out of range.";
       return;
     }
     headerDiv.innerHTML = "";
@@ -330,8 +339,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function humanSize(bytes) {
     if (!bytes || bytes <= 0) return "0 B";
     const units = ["B", "KB", "MB", "GB", "TB"];
-    let i = 0,
-      n = bytes;
+    let i = 0;
+    let n = bytes;
     while (n >= 1024 && i < units.length - 1) {
       n /= 1024;
       i++;
@@ -343,15 +352,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return ALLOWED_EXTS.some((ext) => lower.endsWith(ext));
   }
 
-  // -------------------- 文件处理 --------------------
+  // -------------------- File handling --------------------
   function handleFile(file) {
     if (!file) return;
     if (!isAllowedFilename(file.name)) {
-      setError(`文件格式不支持：${file.name}。仅支持 .fits/.fit/.fts`);
+      setError(`Unsupported file: ${file.name}. Only .fits/.fit/.fts are allowed.`);
       return;
     }
     uploader.classList.remove("dragover");
-    setInfo(`加载中：${file.name} ...`);
+    setInfo(`Loading: ${file.name} ...`);
     const reader = new FileReader();
     reader.onload = () => {
       try {
@@ -360,20 +369,20 @@ document.addEventListener("DOMContentLoaded", () => {
         state.filename = file.name;
         state.hdus = hdus;
         state.selected = 0;
-        setInfo(`已加载文件：${file.name} | 大小：${humanSize(file.size)} | HDU 数量：${hdus.length}`);
+        setInfo(`Loaded: ${file.name} | Size: ${humanSize(file.size)} | HDUs: ${hdus.length}`);
         renderControls();
         renderSummary();
         renderHeader();
       } catch (e) {
         console.error(e);
-        setError(`解析失败：${e?.message || e}`);
+        setError(`Parse failed: ${e?.message || e}`);
       }
     };
-    reader.onerror = () => setError("读取文件失败。");
+    reader.onerror = () => setError("Failed to read file.");
     reader.readAsArrayBuffer(file);
   }
 
-  // -------------------- 事件绑定（与 spectrum-viewer 的交互风格一致） --------------------
+  // -------------------- Events --------------------
   uploader.addEventListener("click", () => fileInput.click());
   fileInput.addEventListener("change", (e) => handleFile(e.target.files && e.target.files[0]));
   uploader.addEventListener("dragover", (e) => {
