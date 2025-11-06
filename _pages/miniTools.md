@@ -9,4 +9,6 @@ children:
     permalink: /miniTools/spectrum-viewer/
   - title: Fits Header Viewer
     permalink: /miniTools/fits-header-viewer/
+  - title: Lomb-Scargle Viewer
+    permalink: /miniTools/ls-viewer/
 ---

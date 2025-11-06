@@ -1,0 +1,242 @@
+:root {
+  --bg: #ffffff; /* 页面背景：白 */
+  --fg: #111111; /* 正文字体：近黑 */
+  --muted: #555b63; /* 次要文字 */
+  --panel: #f7f9fb; /* 面板卡片底色：浅灰 */
+  --accent: #0b6bcb; /* 主色（按钮/链接） */
+  --accent2: #138a7a; /* 辅助高亮 */
+  --warn: #c77800; /* 警示色（更适配浅底） */
+  --border: #d7dde5; /* 边框色 */
+  --focus: #7bb3ff; /* 焦点高亮 */
+  --secondary: #e8edf5; /* 次级按钮底色 */
+  --secondary-fg: #152238; /* 次级按钮前景 */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    Segoe UI,
+    Roboto,
+    Helvetica,
+    Arial,
+    "Noto Sans",
+    "PingFang SC",
+    "Microsoft YaHei",
+    sans-serif;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.ls-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.ls-header {
+  padding: 10px 0 4px;
+}
+.ls-header h1 {
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+.ls-header .sub {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 12px;
+}
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+}
+.panel h2 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+.panel h3 {
+  font-size: 14px;
+  margin: 14px 0 8px;
+  color: var(--muted);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.controls .full {
+  grid-column: 1/-1;
+}
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+@media (max-width: 540px) {
+  .controls,
+  .row {
+    grid-template-columns: 1fr;
+  }
+}
+
+label {
+  font-size: 12px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 4px;
+}
+
+input[type="number"],
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  background: #ffffff; /* 浅色输入背景 */
+  color: var(--fg);
+  border-radius: 8px;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+input[type="number"]::placeholder,
+input[type="text"]::placeholder,
+textarea::placeholder {
+  color: #8a93a3;
+}
+input[type="number"]:hover,
+input[type="text"]:hover,
+select:hover,
+textarea:hover {
+  border-color: #c6d0dc;
+}
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 3px rgba(123, 179, 255, 0.25);
+}
+
+input[type="checkbox"] {
+  transform: translateY(1px);
+  accent-color: var(--accent);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  border: 1px solid transparent;
+  padding: 9px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition:
+    filter 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+.btn:hover {
+  filter: brightness(0.97);
+}
+.btn.secondary {
+  background: var(--secondary);
+  color: var(--secondary-fg);
+  border-color: #d7e0ec;
+}
+.btn.secondary:hover {
+  background: #dde6f3;
+}
+.btn.warn {
+  background: var(--warn);
+  color: #311a00;
+}
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 12px;
+  background: #ffffff;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sp {
+  flex: 1;
+}
+.topbar {
+  margin-bottom: 8px;
+}
+
+.plot {
+  width: 100%;
+  height: 360px;
+  /* Plotly 自身背景在 JS 中设置为白色，这里无需覆盖 */
+}
+
+.footer {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 12px 0 20px;
+}
+
+.hint {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.badge {
+  font-size: 12px;
+  color: var(--muted);
+}

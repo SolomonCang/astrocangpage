@@ -2,7 +2,7 @@
 layout: page
 title: FITS Header Viewer
 permalink: /miniTools/fits-header-viewer/
-description: "在浏览器中解析并查看 FITS 各 HDU 的 Header。"
+description: "Parse and view the headers of each HDU in a FITS file directly in the browser."
 nav: false
 nav_order: 8
 ---
@@ -12,30 +12,33 @@ nav_order: 8
 
 <div class="fhv-container">
   <h2>FITS Header Viewer</h2>
-  <p class="intro">上传 .fits / .fit / .fts 文件以查看其各 HDU 的 Header 信息。可点击选择文件或将文件拖拽到框内。</p>
+  <p class="intro">
+    Upload a .fits / .fit / .fts file to inspect the header of each HDU.
+    You can click to choose a file or drag and drop it into the box.
+  </p>
 
-  <!-- 上传区 -->
+  <!-- Uploader -->
   <div class="uploader" id="uploader">
     <label for="fhv-file-input">
-      将文件拖拽到此处，或 <span class="click">点击选择文件</span>
+      Drag and drop a file here, or <span class="click">click to choose a file</span>
     </label>
     <input id="fhv-file-input" type="file" accept=".fits,.fit,.fts" />
   </div>
 
   <div id="fhv-file-info" class="file-info"></div>
 
-  <!-- 控件 -->
+  <!-- Controls -->
   <div id="fhv-controls" class="controls">
     <div class="row">
-      <label for="fhv-hdu-select">选择 HDU：</label>
+      <label for="fhv-hdu-select">Select HDU:</label>
       <select id="fhv-hdu-select"></select>
       <span id="fhv-hdu-count" class="badge"></span>
     </div>
   </div>
 
-  <!-- 概览 -->
+  <!-- Overview -->
   <div id="fhv-summary" class="summary"></div>
   <hr />
-  <!-- Header 表 -->
+  <!-- Header table -->
   <div id="fhv-header" class="header"></div>
 </div>
