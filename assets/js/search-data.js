@@ -44,6 +44,13 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/miniTools/spectrum-viewer/";
               },
+            },{id: "dropdown-fits-header-viewer",
+              title: "Fits Header Viewer",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/miniTools/fits-header-viewer/";
+              },
             },{id: "dropdown-irap",
               title: "IRAP",
               description: "",
@@ -99,7 +106,7 @@ ninja.data = [{
         },
       },{id: "post-a-table-of-observational-chromospheric-emission-lines",
         
-          title: "A table of observational chromospheric emission lines",
+          title: "a table of observational chromospheric emission lines",
         
         description: "chromospheric line list for low-mass stars",
         section: "Posts",
