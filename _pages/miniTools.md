@@ -7,4 +7,6 @@ dropdown: true
 children:
   - title: Spectrum Viewer
     permalink: /miniTools/spectrum-viewer/
+  - title: Fits Header Viewer
+    permalink: /miniTools/fits-header-viewer/
 ---
