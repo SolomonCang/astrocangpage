@@ -14,8 +14,9 @@ nav_order: 9
 <div class="ls-container">
   <header class="ls-header">
     <h1>Lomb–Scargle Periodogram</h1>
-    <div class="sub">Upload 2-3 column CSV or space-separated text (ignore lines starting with #). Auto-plot time series, compute L-S with parallel workers and peak annotation, and phase-fold by period.</div>
+    <div class="sub">Upload 2-3 columns time series data (with Time, Values, Uncertainty), separeted by comma or space, compute L-S with parallel workers and peak annotation, and phase-fold by period.</div>
     <div class="sub">Notes:
+    - The data will not send to serve, all calculations and plots are loccal 
     - Default f_min ~ 1/T, where T = max(t) - min(t); f_max ~ 0.5 / min dt.
     - Upload 2-3 columns (third is optional sigma). Lines starting with # are ignored.
     - Computation runs with Web Workers in parallel.</div>

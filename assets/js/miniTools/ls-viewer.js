@@ -6,6 +6,12 @@
     if (el) el.textContent = v;
   };
 
+  // reverse Y axis?
+  function isInvertY() {
+    const el = $("invertY");
+    return !!(el && el.checked);
+  }
+
   // separator detection and parsing
   function detectSep(line) {
     if (line.includes(",")) return ",";
@@ -206,8 +212,25 @@
 
   // plots
   function plotTimeSeries() {
+    const invert = isInvertY();
     if (data.t.length === 0) {
-      Plotly.newPlot("timePlot", [{ x: [0], y: [0], mode: "markers", visible: "legendonly" }], { paper_bgcolor: "#ffffff", plot_bgcolor: "#ffffff" });
+      Plotly.newPlot(
+        "timePlot",
+        [{ x: [0], y: [0], mode: "markers", visible: "legendonly" }],
+        {
+          paper_bgcolor: "#ffffff",
+          plot_bgcolor: "#ffffff",
+          margin: { l: 50, r: 10, t: 10, b: 40 },
+          xaxis: { title: "t", gridcolor: "#e6ebf2", zerolinecolor: "#e6ebf2" },
+          yaxis: {
+            title: "y",
+            gridcolor: "#e6ebf2",
+            zerolinecolor: "#e6ebf2",
+            autorange: invert ? "reversed" : true,
+          },
+        },
+        { responsive: true }
+      );
       return;
     }
     const trace = { x: data.t, y: data.y, mode: "markers", marker: { color: "#3aa0ff", size: 6, opacity: 0.8 }, name: "y(t)" };
@@ -216,7 +239,12 @@
       plot_bgcolor: "#ffffff",
       margin: { l: 50, r: 10, t: 10, b: 40 },
       xaxis: { title: "t", gridcolor: "#e6ebf2", zerolinecolor: "#e6ebf2" },
-      yaxis: { title: "y", gridcolor: "#e6ebf2", zerolinecolor: "#e6ebf2" },
+      yaxis: {
+        title: "y",
+        gridcolor: "#e6ebf2",
+        zerolinecolor: "#e6ebf2",
+        autorange: invert ? "reversed" : true,
+      },
     };
     Plotly.newPlot("timePlot", [trace], layout, { responsive: true });
   }
@@ -493,7 +521,7 @@
     btnClear.addEventListener("click", () => {
       data = { t: [], y: [], s: [] };
       lastLS = { freqs: new Float64Array(0), P: new Float64Array(0), peakIndex: -1 };
-      fileInput.value = "";
+      if (fileInput) fileInput.value = "";
       updateStats();
       plotTimeSeries();
       plotLS(new Float64Array(0), new Float64Array(0), -1);
@@ -538,6 +566,14 @@
       const useHalf = $("mirrorPeriod").checked;
       plotPhase(useHalf ? per / 2 : per, t0, parseInt($("phaseRepeat").value, 10));
     });
+
+  //
+  const invertBox = $("invertY");
+  if (invertBox) {
+    invertBox.addEventListener("change", () => {
+      plotTimeSeries();
+    });
+  }
 
   // initial plots
   plotTimeSeries();
