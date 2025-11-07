@@ -51,6 +51,13 @@ ninja.data = [{
               handler: () => {
                 window.location.href = "/miniTools/fits-header-viewer/";
               },
+            },{id: "dropdown-lomb-scargle-viewer",
+              title: "Lomb-Scargle Viewer",
+              description: "",
+              section: "Dropdown",
+              handler: () => {
+                window.location.href = "/miniTools/ls-viewer/";
+              },
             },{id: "dropdown-irap",
               title: "IRAP",
               description: "",
