@@ -266,7 +266,7 @@
         arrowhead: 3,
         ax: 20,
         ay: -20,
-        font: { color: "#a33" }, // 更适合浅色背景
+        font: { color: "#a33" },
       });
     }
     const layout = {
